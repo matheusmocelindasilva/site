@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado Livre - Clone Avançado</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Principal -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo" onclick="resetarFiltros()">MercadoLivre</div>
+            
+            <!-- Barra de Pesquisa em Tempo Real -->
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Buscar produtos, marcas e muito mais..." onkeyup="filtrarPorBusca()">
+                <button type="button">🔍</button>
+            </div>
+
+            <div class="cart-icon">
+                🛒 <span id="cart-count">0</span>
+            </div>
+        </div>
+
+        <!-- Subcategorias Superiores -->
+        <nav class="subcategories-bar">
+            <button class="nav-btn active" onclick="filtrarCategoria('todas', this)">Todas as Ofertas</button>
+            <button class="nav-btn" onclick="filtrarCategoria('eletronicos', this)">Eletrônicos</button>
+            <button class="nav-btn" onclick="filtrarCategoria('informatica', this)">Informática</button>
+            <button class="nav-btn" onclick="filtrarCategoria('audio', this)">Áudio & Som</button>
+            <button class="nav-btn" onclick="filtrarCategoria('games', this)">Games</button>
+        </nav>
+    </header>
+
+    <!-- MODAL DE PAGAMENTO SIMULADO -->
+    <div id="modal-pagamento" class="modal hidden">
+        <div class="modal-content">
+            <h2>Escolha a forma de pagamento</h2>
+            <p class="modal-subtitle">Produto: <strong id="pay-product-title">--</strong></p>
+            <p class="modal-price">Total: <strong id="pay-product-price">R$ 0,00</strong></p>
+            
+            <div class="payment-options">
+                <button class="btn-pay-option" onclick="processarPagamento('Pix')">⚡ PIX (Aprovação Instantânea)</button>
+                <button class="btn-pay-option" onclick="processarPagamento('Cartão de Crédito')">💳 Cartão de Crédito</button>
+            </div>
+            
+            <button class="btn-cancel" onclick="fecharModalPagamento()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- MODAL DE PROCESSANDO PAGAMENTO -->
+    <div id="modal-processando" class="modal hidden">
+        <div class="modal-content">
+            <div class="spinner"></div>
+            <h2>Processando seu pagamento...</h2>
+            <p>Aguarde enquanto confirmamos com a instituição financeira.</p>
+        </div>
+    </div>
+
+    <!-- VISÃO 1: Grid de Produtos (Home) -->
+    <main id="home-view" class="main-container">
+        <h2 id="section-title">Ofertas do dia</h2>
+        <section class="products-grid" id="products-container">
+            <!-- Renderizado dinamicamente via JavaScript -->
+        </section>
+    </main>
+
+    <!-- VISÃO 2: Painel de Detalhes do Produto -->
+    <div id="product-detail-view" class="main-container hidden">
+        <button class="btn-back" onclick="fecharDetalhes()">← Voltar às ofertas</button>
+
+        <div class="product-detail-card">
+            <div class="detail-gallery">
+                <div class="main-image">
+                    <img id="detail-img" src="" alt="Imagem do Produto">
+                </div>
+            </div>
+
+            <div class="detail-main-info">
+                <span class="product-status">Novo | +1000 vendidos</span>
+                <h1 id="detail-title">Nome do Produto</h1>
+                
+                <div class="price-box">
+                    <span id="detail-old-price" class="old-price"></span>
+                    <div class="price-row">
+                        <span id="detail-price" class="current-price-large">R$ 0</span>
+                        <span id="detail-discount" class="discount-badge"></span>
+                    </div>
+                    <p class="installments-highlight">em 10x de <span id="detail-installment-val">R$ 0</span> sem juros</p>
+                </div>
+
+                <div class="shipping-info-box">
+                    <p class="free-shipping-text">⚡ Frete grátis para todo o país</p>
+                    <p class="subtext">Chegará amanhã no seu endereço</p>
+                </div>
+
+                <div class="description-box">
+                    <h2>Descrição do Produto</h2>
+                    <p id="detail-description">Carregando descrição...</p>
+                </div>
+            </div>
+
+            <div class="buy-box">
+                <p class="stock-status">Estoque disponível</p>
+                
+                <div class="quantity-selector">
+                    <label for="quantity">Quantidade:</label>
+                    <select id="quantity">
+                        <option value="1">1 unidade</option>
+                        <option value="2">2 unidades</option>
+                    </select>
+                </div>
+
+                <button class="btn-direct-buy" id="btn-detail-direct">Comprar agora (Direto)</button>
+                <button class="btn-secondary" onclick="adicionarAoCarrinho()">Adicionar ao carrinho</button>
+
+                <div class="guarantee-box">
+                    <p>🛡️ <strong>Devolução grátis:</strong> 30 dias de garantia.</p>
+                    <p>🏆 <strong>Compra Garantida:</strong> Receba o produto ou seu dinheiro de volta.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VISÃO 3: Tela de Rastreamento do Pedido (Estilo Mercado Livre) -->
+    <div id="tracking-view" class="main-container hidden">
+        <button class="btn-back" onclick="fecharRastreio()">← Voltar para a loja</button>
+
+        <div class="tracking-card">
+            <div class="tracking-header">
+                <h2>Status do Pedido <span class="tracking-code" id="track-code">#ML-98421038</span></h2>
+                <span class="badge-approved">Pagamento Aprovado ✔</span>
+            </div>
+
+            <div class="track-product-summary">
+                <img id="track-img" src="" alt="Produto">
+                <div>
+                    <h3 id="track-title">Nome do Produto</h3>
+                    <p>Pago via: <strong id="track-payment-method">PIX</strong></p>
+                    <p class="delivery-estimate">Chega até amanhã às 18:00</p>
+                </div>
+            </div>
+
+            <!-- Linha do Tempo de Rastreio -->
+            <div class="timeline-container">
+                <h3>Linha do Tempo da Entrega</h3>
+                <ul class="timeline">
+                    <li class="timeline-item active">
+                        <div class="timeline-icon">✓</div>
+                        <div class="timeline-content">
+                            <h4>Pagamento aprovado</h4>
+                            <p>O vendedor está preparando seu pacote.</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item" id="step-prep">
+                        <div class="timeline-icon">📦</div>
+                        <div class="timeline-content">
+                            <h4>Pacote a caminho do centro de distribuição</h4>
+                            <p>Enviado pela transportadora Mercado Envios.</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item" id="step-transit">
+                        <div class="timeline-icon">🚚</div>
+                        <div class="timeline-content">
+                            <h4>Em trânsito</h4>
+                            <p>O pacote está a caminho do seu endereço.</p>
+                        </div>
+                    </li>
+                    <li class="timeline-item" id="step-delivered">
+                        <div class="timeline-icon">🏠</div>
+                        <div class="timeline-content">
+                            <h4>Entregue</h4>
+                            <p>Pacote entregue no destino final.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
