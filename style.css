@@ -6,16 +6,16 @@
 }
 
 body {
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: #FFF9F2;
+    color: #5C462B;
 }
 
 .hidden { display: none !important; }
 
 /* Header & Barra Superior */
 .header {
-    background-color: #fff159;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    background-color: #4d433f;
+    box-shadow: 0 1px 3px rgba(255, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -34,7 +34,7 @@ body {
 .logo {
     font-size: 1.4rem;
     font-weight: bold;
-    color: #2d3277;
+    color: #fcfaf6;
     cursor: pointer;
 }
 
@@ -42,27 +42,30 @@ body {
     display: flex;
     flex-grow: 1;
     max-width: 600px;
-    background: #fff;
-    border-radius: 2px;
+    background: #d1c9c6;
+    border-radius: 50px; /* Arredonda o container principal */
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    overflow: hidden; /* Garante que nada saia das bordas arredondadas */
 }
 
 .search-box input {
     width: 100%;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 15px 10px 20px; /* Aumentado o padding da esquerda para afastar o texto do canto */
     outline: none;
     font-size: 0.95rem;
+    background: transparent; /* Herda o fundo cinza do container */
 }
 
 .search-box button {
     border: none;
     background: transparent;
-    padding: 10px 15px;
+    padding: 10px 20px; /* Aumentado o padding da direita para harmonizar a curva */
+    cursor: pointer;
 }
 
 .cart-icon {
-    font-size: 1.2rem;
+    font-size: 1.5 rem;
     font-weight: bold;
 }
 
@@ -80,7 +83,7 @@ body {
     background: none;
     border: none;
     font-size: 0.85rem;
-    color: #333;
+    color: #f3f2f2;
     cursor: pointer;
     padding: 4px 8px;
     border-radius: 4px;
@@ -88,7 +91,7 @@ body {
 }
 
 .nav-btn.active, .nav-btn:hover {
-    background-color: rgba(0,0,0,0.08);
+    background-color: rgba(83, 83, 83, 0.37);
     font-weight: bold;
 }
 
@@ -108,9 +111,9 @@ body {
 
 /* Card de Produto */
 .product-card {
-    background: #fff;
-    border-radius: 4px;
-    border: 1px solid #e6e6e6;
+    background: #F5EADA;
+    border-radius: 10px;
+    border: 2px solid #cabba4;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -119,7 +122,7 @@ body {
 
 .product-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 7px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 7px 16px rgb(146, 131, 113);
 }
 
 .card-clickable {
@@ -143,8 +146,8 @@ body {
 .tag-promo {
     font-size: 0.65rem;
     font-weight: bold;
-    color: #fff;
-    background-color: #3483fa;
+    color: #faf8f8;
+    background-color: #997a4c;
     padding: 2px 6px;
     border-radius: 2px;
     width: fit-content;
@@ -156,15 +159,15 @@ body {
     margin: 8px 0;
 }
 
-.old-price { font-size: 0.75rem; color: #999; text-decoration: line-through; }
-.current-price { font-size: 1.3rem; color: #333; }
+.old-price { font-size: 0.75rem; color: #46382f; text-decoration: line-through; }
+.current-price { font-size: 1.3rem; color: #000000; }
 .current-price small { font-size: 0.75rem; color: #00a650; }
 .free-shipping { font-size: 0.75rem; color: #00a650; margin-top: 4px; }
 
 .btn-direct-buy {
     margin: 0 15px 15px 15px;
-    background-color: #00a650;
-    color: #fff;
+    background-color: #664f33;
+    color: #faf8f8;
     border: none;
     padding: 10px;
     border-radius: 4px;
@@ -175,7 +178,7 @@ body {
 }
 
 .btn-direct-buy:hover {
-    background-color: #008741;
+    background-color: #503f27;
 }
 
 /* Modais de Pagamento */
@@ -190,7 +193,7 @@ body {
 }
 
 .modal-content {
-    background: #fff;
+    background: #ffe7c8;
     padding: 30px;
     border-radius: 8px;
     text-align: center;
@@ -199,7 +202,7 @@ body {
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
-.modal-subtitle { color: #666; margin: 8px 0; font-size: 0.95rem; }
+.modal-subtitle { color: #42403c; margin: 8px 0; font-size: 0.95rem; }
 .modal-price { font-size: 1.2rem; color: #00a650; margin-bottom: 20px; }
 
 .payment-options {
@@ -210,7 +213,7 @@ body {
 }
 
 .btn-pay-option {
-    background-color: #3483fa;
+    background-color: #806343;
     color: #fff;
     border: none;
     padding: 12px;
@@ -220,20 +223,20 @@ body {
     font-size: 0.95rem;
 }
 
-.btn-pay-option:hover { background-color: #2968c8; }
+.btn-pay-option:hover { background-color: #5e4b29; }
 
 .btn-cancel {
     background: none;
     border: none;
-    color: #666;
+    color: #383838;
     cursor: pointer;
     font-size: 0.85rem;
 }
 
 /* Spinner de Carregamento */
 .spinner {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #3483fa;
+    border: 4px solid #6e4f3d;
+    border-top: 4px solid #f5f5f7;
     border-radius: 50%;
     width: 40px; height: 40px;
     animation: spin 1s linear infinite;
@@ -247,9 +250,9 @@ body {
 
 /* Tela de Rastreio (Mercado Livre Style) */
 .tracking-card {
-    background: #fff;
+    background: #fff7f1;
     border-radius: 8px;
-    border: 1px solid #e6e6e6;
+    border: 1px solid #b49b86;
     padding: 25px;
 }
 
@@ -257,12 +260,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #523c28;
     padding-bottom: 15px;
     margin-bottom: 20px;
 }
 
-.tracking-code { font-size: 0.9rem; color: #666; font-weight: normal; }
+.tracking-code { font-size: 0.9rem; color: #000000; font-weight: normal; }
 .badge-approved { background: #e6f7ee; color: #00a650; padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 0.85rem; }
 
 .track-product-summary {
@@ -274,15 +277,15 @@ body {
 }
 
 .track-product-summary img { width: 80px; height: 80px; object-fit: contain; }
-.delivery-estimate { color: #00a650; font-weight: bold; margin-top: 5px; }
+.delivery-estimate { color: #000000; font-weight: bold; margin-top: 5px; }
 
 .timeline-container { margin-top: 25px; }
-.timeline-container h3 { margin-bottom: 20px; color: #333; }
+.timeline-container h3 { margin-bottom: 20px; color: #5c4838; }
 
 .timeline { list-style: none; position: relative; padding-left: 20px; }
 .timeline::before {
     content: ''; position: absolute; left: 35px; top: 15px; bottom: 20px;
-    width: 2px; background: #e6e6e6;
+    width: 2px; background: #646464;
 }
 
 .timeline-item {
@@ -298,34 +301,34 @@ body {
 .timeline-icon {
     width: 32px; height: 32px;
     border-radius: 50%;
-    background: #e6e6e6;
+    background: #ccbfb7;
     display: flex; justify-content: center; align-items: center;
     font-weight: bold; color: #666;
     z-index: 1;
 }
 
 .timeline-item.active .timeline-icon {
-    background: #00a650;
-    color: #fff;
+    background: #443f28;
+    color: #f8f5f5;
 }
 
 .timeline-content h4 { font-size: 0.95rem; margin-bottom: 2px; }
-.timeline-content p { font-size: 0.85rem; color: #666; }
+.timeline-content p { font-size: 0.85rem; color: #63554c; }
 
 /* Tela de Detalhes */
-.btn-back { background: none; border: none; color: #3483fa; cursor: pointer; margin-bottom: 15px; }
+.btn-back { background: none; border: none; color: #050505; cursor: pointer; margin-bottom: 15px; }
 .product-detail-card {
-    background: #fff; border-radius: 8px; border: 1px solid #e6e6e6;
+    background: #fff2ea; border-radius: 8px; border: 1px solid #745d50;
     padding: 25px; display: grid; grid-template-columns: 1fr 1.2fr 300px; gap: 30px;
 }
-.detail-gallery img { width: 100%; max-height: 350px; object-fit: contain; }
-.current-price-large { font-size: 2.2rem; }
-.discount-badge { color: #00a650; font-size: 1.1rem; margin-left: 10px; }
-.shipping-info-box { margin: 20px 0; padding-top: 15px; border-top: 1px solid #eee; }
-.free-shipping-text { color: #00a650; font-weight: bold; }
+.detail-gallery img { width: 100%; max-height: 400px; object-fit: contain; }
+.current-price-large { font-size: 2.4rem; }
+.discount-badge { color: #000000; font-size: 1.1rem; margin-left: 15px; }
+.shipping-info-box { margin: 20px 0; padding-top: 15px; border-top: 2px solid #eee; }
+.free-shipping-text { color: #141414; font-weight: bold; }
 .subtext { font-size: 0.8rem; color: #666; }
-.description-box { margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; }
-.buy-box { border: 1px solid #e6e6e6; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px; height: fit-content; }
-.btn-primary { background-color: #3483fa; color: #fff; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; }
-.btn-secondary { background-color: rgba(65, 137, 230, 0.15); color: #3483fa; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; }
-.guarantee-box { font-size: 0.75rem; color: #999; display: flex; flex-direction: column; gap: 8px; }
+.description-box { margin-top: 10px; padding-top: 15px; border-top: 3px solid #eee; }
+.buy-box { border: 2px solid #796e63; border-radius: 8px; padding: 20px; display: flex; flex-direction: column; gap: 12px; height: fit-content; }
+.btn-primary { background-color: #5e5449; color: #f1f0f0; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+.btn-secondary { background-color: rgba(65, 63, 62, 0.199); color: #44382f; border: none; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+.guarantee-box { font-size: 0.75rem; color: #555252; display: flex; flex-direction: column; gap: 8px; }

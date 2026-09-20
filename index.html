@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercado Livre - Clone Avançado</title>
+    <title>SEM NOME </title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- imagens prinical-->
+     
 
     <!-- Cabeçalho Principal -->
     <header class="header">
         <div class="header-container">
-            <div class="logo" onclick="resetarFiltros()">MercadoLivre</div>
+            <div class="logo" onclick="resetarFiltros()">SEM NOME</div>
             
             <!-- Barra de Pesquisa em Tempo Real -->
             <div class="search-box">
-                <input type="text" id="search-input" placeholder="Buscar produtos, marcas e muito mais..." onkeyup="filtrarPorBusca()">
+                <input type="text" id="search-input" placeholder="Buscar produtos" onkeyup="filtrarPorBusca()">
                 <button type="button">🔍</button>
             </div>
 
@@ -26,11 +28,14 @@
 
         <!-- Subcategorias Superiores -->
         <nav class="subcategories-bar">
-            <button class="nav-btn active" onclick="filtrarCategoria('todas', this)">Todas as Ofertas</button>
-            <button class="nav-btn" onclick="filtrarCategoria('eletronicos', this)">Eletrônicos</button>
-            <button class="nav-btn" onclick="filtrarCategoria('informatica', this)">Informática</button>
-            <button class="nav-btn" onclick="filtrarCategoria('audio', this)">Áudio & Som</button>
-            <button class="nav-btn" onclick="filtrarCategoria('games', this)">Games</button>
+            <button class="nav-btn active" onclick="filtrarCategoria('todas', this)">Todas</button>
+            <button class="nav-btn" onclick="filtrarCategoria('Especial', this)">Especial</button>
+            <button class="nav-btn" onclick="filtrarCategoria('lançamento', this)">lançamento</button>
+            <button class="nav-btn" onclick="filtrarCategoria('Rosto', this)">Rosto</button>
+            <button class="nav-btn" onclick="filtrarCategoria('Corpo', this)">Corpo</button>
+            <button class="nav-btn" onclick="filtrarCategoria('Hidratante', this)">Hidratante</button>
+            <button class="nav-btn" onclick="filtrarCategoria('Sabonete', this)">Sabonete</button>
+            <button class="nav-btn" onclick="filtrarCategoria('Esfoliante', this)">Esfoliante</button>
         </nav>
     </header>
 
@@ -61,9 +66,17 @@
 
     <!-- VISÃO 1: Grid de Produtos (Home) -->
     <main id="home-view" class="main-container">
-        <h2 id="section-title">Ofertas do dia</h2>
+        <h2 id="section-title">Linha Especial</h2>
         <section class="products-grid" id="products-container">
             <!-- Renderizado dinamicamente via JavaScript -->
+        </section>
+    </main>
+
+     <!-- VISÃO 2: Para Você -->
+    <main id="home-para-voce-view" class="main-container">
+        <h2>Para Você</h2>
+        <section class="products-grid" id="products-container-para-voce">
+            <!-- Renderizado via JavaScript -->
         </section>
     </main>
 
